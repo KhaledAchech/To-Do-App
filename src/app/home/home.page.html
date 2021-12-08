@@ -1,20 +1,66 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-button (click)="logout()" slot="end">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
     <ion-title>
-      Blank
+      <ion-icon name="checkbox-outline"></ion-icon> To-Do
+      
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+<ion-content class="ion-padding" class="background-image" [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+  <ion-header class="ion-padding">
+    <ion-toolbar color = "lighter_blue" style=" color: rgba(6, 32, 66, 0.959);">
+      <ion-title > <strong> Hello</strong></ion-title>
+      <ion-item  color = "lighter_blue"  style="  color: rgba(6, 32, 66, 0.959);"> Today is {{ today | date: 'fullDate' }} </ion-item>
+      <ion-item color="lighter_blue" style="  color: rgba(6, 32, 66, 0.959);">
+         <ion-icon color="danger" size="small" name="ellipse"></ion-icon><strong> High priority </strong> <ion-icon color="warning" size="small" name="ellipse"></ion-icon> <strong> Meduim priority</strong> <ion-icon color="success" size="small" name="ellipse"></ion-icon><strong> Low priority</strong>
+        </ion-item>
     </ion-toolbar>
   </ion-header>
+  
+  <ion-card *ngFor = "let item of toDoList" class="transparent">
+    
+    <ion-card-header>
+     
+      <ion-card-subtitle [style.color]="item.priority === 'high' ? 'red' : (item.priority === 'low' ? 'green' : 'orange')" >
+        {{item.category}}
+      </ion-card-subtitle>
+      <ion-item  color = "lighter_blue" style=" color: rgba(6, 32, 66, 0.959);">
+        <ion-checkbox (ionChange)="changeCheck(item)" [(ngModel)]="item.checked" color="success" slot="start"></ion-checkbox>
+        <ion-icon *ngIf="item.priority === 'high'" color="danger" size="small" name="ellipse"></ion-icon>
+        <ion-icon *ngIf="item.priority === 'low'" color="success" size="small" name="ellipse"></ion-icon>
+        <ion-icon *ngIf="item.priority === 'meduim'" color="warning" size="small" name="ellipse"></ion-icon>
+        <ion-label *ngIf="item.checked" style="text-decoration:line-through;">{{item.name}}</ion-label>
+        <ion-label *ngIf="!item.checked" >{{item.name}}</ion-label>
+      </ion-item>
+    </ion-card-header>
+<ion-card-content>
+  <ion-label>Due {{item.hour}}</ion-label>
+</ion-card-content>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  </ion-card>
+
+    </ion-col>
+    </ion-row>
+    </ion-grid>
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="addNewItem()">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-text color="dark">
+      <h6>
+        <ion-icon name="at-circle-outline"></ion-icon> Made by Syrine Nacer, Eya Harbaoui and Khaled Achech.
+      </h6>
+    </ion-text>
+  </ion-toolbar>
+</ion-footer>

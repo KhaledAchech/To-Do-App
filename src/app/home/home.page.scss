@@ -7,7 +7,17 @@
   top: 50%;
   transform: translateY(-50%);
 }
+.transparent {
+  background: rgba(255, 255, 255, 0.5);
+}
 
+.lighter_blue {
+  background: rgba(68, 65, 231, 0.13);
+}
+
+.text_Color {
+  color: rgba(39, 76, 100, 0.685);
+}
 #container strong {
   font-size: 20px;
   line-height: 26px;
@@ -24,4 +34,7 @@
 
 #container a {
   text-decoration: none;
+}
+.background-image {
+  --background: url(../../assets/main.jpg) 0 0/100% 100% no-repeat;
 }

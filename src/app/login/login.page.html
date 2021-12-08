@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding" class="background-image">
+  
+    <ion-grid>
+      <ion-row>
+      <ion-col size-md="6" offset-md="3">
+      <div class="form">
+        <ion-avatar class="image-center">
+          <img src="https://gravatar.com/avatar">
+        </ion-avatar>
+        <br>
+        <br>
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input [(ngModel)]='email'></ion-input>
+    </ion-item>
+    
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type = "password" [(ngModel)]='password'></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-button (click)='login()' expand='block'>Login</ion-button>
+
+    <h5 (click)='signup()'>Don't have account? <ion-text color='primary'>register here</ion-text>
+    </h5>
+
+  </div>
+    </ion-col>
+    </ion-row>
+    </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-text color="dark" >
+      <h6><ion-icon name="at-circle-outline"></ion-icon>Made by Syrine Nacer, Eya Harbaoui and Khaled Achech.</h6>
+    </ion-text>
+  </ion-toolbar>
+</ion-footer>
